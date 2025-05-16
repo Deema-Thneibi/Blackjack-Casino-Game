@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+@font-face {
+    font-family: 'Aptos';
+    src: url('./fonts/Aptos.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Aptos', sans-serif, 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+header,
+main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+
+header .heroImg,
+main .heroImg {
+    width: 100%;
+    height: 100vh;
+    max-height: 100%;
+}
+
+header .heroImg img,
+header .BlackjackWord img,
+main .heroImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+}
+
+main .heroImg img {
+    object-fit: cover;
+}
+
+header .BlackjackWord {
+    width: 970px;
+    height: auto;
+    position: absolute;
+    /* top: -30px;
+    left: 290px; */
+
+    top: -5%;
+    left: 19.5%;
+
+}
+
+header .playButton {
+    position: absolute;
+    bottom: 15%;
+    left: 42%;
+}
+
+header .playButton button {
+    width: 100%;
+    height: 100%;
+    padding: 10px 80px;
+    border-radius: 15px;
+    font-size: 44px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    color: #0D3512;
+    background-color: #90A891;
+    border: 3.5px solid #0D3512;
+    transition: all 0.5s;
+}
+
+header .playButton button:hover {
+    background-color: #CA9F43;
+    border: 3.5px solid #CA9F43;
+}
+
+/* main */
+main {
+    display: none;
+    position: relative;
+}
+
+
+
+main .mainContent {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+        "header header header"
+        "player nothing dealer"
+        "buttons buttons buttons";
+    position: absolute;
+    top: 0;
+    padding: 20px 50px;
+    gap: 20px;
+}
+
+main .mainContent .header {
+    grid-area: header;
+    text-align: center;
+}
+
+main .mainContent .header h1 {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-family: 'Aptos', sans-serif, 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 150px;
+    text-shadow: 3px 3px #774206;
+}
+
+
+
+/* buttons */
+main .mainContent .buttons {
+    grid-area: buttons;
+}
+
+main .mainContent .buttons {
+    grid-area: buttons;
+    width: 45%;
+    display: grid;
+    grid-template-columns: repeat(3, 130px);
+    grid-template-rows: 60px;
+    grid-template-areas:
+        "hit stand deal";
+    gap: 20px;
+    text-align: center;
+    margin: auto;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+main .mainContent .buttons .hitButton {
+    grid-area: hit;
+
+}
+
+main .mainContent .buttons .standButton {
+    grid-area: stand;
+}
+
+main .mainContent .buttons .dealButton {
+    grid-area: deal;
+}
+
+main .mainContent .buttons div {
+    background-color: #080808;
+    border-radius: 15px;
+    border: 3.5px solid white;
+    padding: 2px;
+    box-shadow: 0px 1px 3px 3px #090909;
+
+}
+
+main .mainContent .buttons div button {
+    text-align: center;
+    font-size: 23px;
+    color: black;
+    background-color: #929292;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+}
+
+/* player */
+main .mainContent .dealer {
+    grid-area: dealer;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "playerHeader"
+        "cards";
+    grid-template-rows: repeat(2, auto);
+
+    margin: auto;
+    justify-content: center;
+    align-items: start;
+    align-content: start;
+    gap: 20px;
+    padding-bottom: 10px;
+    margin-top: -30px;
+}
+
+main .mainContent .player {
+    width: 100%;
+    grid-area: player;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "playerHeader"
+        "cards";
+    grid-template-rows: repeat(2, auto);
+
+    margin: auto;
+    justify-content: center;
+    align-items: start;
+    align-content: start;
+    gap: 20px;
+    padding-bottom: 10px;
+    margin-top: -30px;
+}
+
+main .player .header,
+main .dealer .header {
+    grid-area: playerHeader;
+    font-size: 45px;
+    color: #eb8383;
+    text-align: center;
+    display: block;
+}
+
+
+main .player .cards,
+main .dealer .cards {
+    grid-area: cards;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 15px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.card {
+
+    width: calc((100% - 45px) / 4);
+    height: 150px;
+    box-shadow: 2px 1px 13px 4px #621010;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: fill;
+}
+
+
+.message {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(50, 51, 50, 0.3);
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+    z-index: 10;
+}
+
+.message p {
+    padding: 40px 200px;
+    border-radius: 20px;
+}
