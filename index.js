@@ -463,48 +463,55 @@ const stand = () => {
         }
         dealer_sum_cards.textContent = dealerSum;
     }, 500)
-
-    if (playerSum > dealerSum && playerSum <= 21) {
-        setTimeout(() => {
-            successMessage("🎉 You win with a higher hand! 🏆");
-        }, 2000)
-    }
-
-    else if (playerSum === 21 && playerCardCount === 2) {
+    // Player has Blackjack (21 with 2 cards)
+    if (playerSum === 21 && playerCardCount === 2) {
         setTimeout(() => {
             successMessage("🎉 Blackjack! You win! 🏆");
-        }, 2000)
+        }, 2000);
     }
 
-    else if (dealerSum > 21) {
-        setTimeout(() => {
-            successMessage("🎉 Dealer busted! You win! 🏆");
-        }, 2000)
-    }
-
-    else if (playerSum > 21) {
-        setTimeout(() => {
-            errorMessage("❌ You busted! Dealer wins 😔");
-        }, 2000)
-    }
-
-    else if (dealerSum > playerSum && dealerSum <= 21) {
-        setTimeout(() => {
-            errorMessage("❌ Dealer wins with a higher hand. 😔");
-        }, 2000)
-    }
-
+    // Dealer has Blackjack (21 with 2 cards)
     else if (dealerSum === 21 && dealerCardCount === 2) {
         setTimeout(() => {
             errorMessage("❌ Dealer got Blackjack. You lose. 😔");
-        }, 2000)
+        }, 2000);
     }
 
-    else if (dealerSum === playerSum && dealerSum <= 21 && playerSum <= 21) {
+    // Player busted (over 21)
+    else if (playerSum > 21) {
+        setTimeout(() => {
+            errorMessage("❌ You busted! Dealer wins 😔");
+        }, 2000);
+    }
+
+    // Dealer busted (over 21)
+    else if (dealerSum > 21) {
+        setTimeout(() => {
+            successMessage("🎉 Dealer busted! You win! 🏆");
+        }, 2000);
+    }
+
+    // Tie (push)
+    else if (dealerSum === playerSum && dealerSum <= 21) {
         setTimeout(() => {
             tieMessage("⚖️ It's a tie! (Push)");
-        }, 2000)
+        }, 2000);
     }
+
+    // Player wins with higher hand
+    else if (playerSum > dealerSum && playerSum <= 21) {
+        setTimeout(() => {
+            successMessage("🎉 You win with a higher hand! 🏆");
+        }, 2000);
+    }
+
+    // Dealer wins with higher hand
+    else if (dealerSum > playerSum && dealerSum <= 21) {
+        setTimeout(() => {
+            errorMessage("❌ Dealer wins with a higher hand. 😔");
+        }, 2000);
+    }
+
 }
 
 
