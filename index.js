@@ -425,7 +425,7 @@ const deal = () => {
     }, 100); // ننتظر  عشان تكون البطاقات ظهرت قبل prompt
     cardBack = document.querySelector("#cardBack");
     dealerCardCount++;
-    playerCardCount++;
+    playerCardCount += 2;
 
 };
 
@@ -437,6 +437,7 @@ const chooseValueOfCard1 = () => {
 
 
 const stand = () => {
+    dealerCardCount++;
     standButton.style.cursor = "not-allowed";
     hitButton.style.cursor = "not-allowed";
     standButton.style.pointerEvents = "none";
@@ -445,7 +446,7 @@ const stand = () => {
     hitButton.style.opacity = "0.6";
 
     cardBack.innerHTML = `<img src="${card4.img}" alt = "card${card4.value}"/>`
-    dealerSum = dealerSum + (card4.value === 1 ? 11 : card4.value);
+    dealerSum += (card4.value === 1 && dealerSum + 11 <= 21) ? 11 : card4.value;
     dealer_sum_cards.textContent = dealerSum; // 10
 
     setTimeout(() => {
@@ -454,16 +455,13 @@ const stand = () => {
             dealer_cards_class.innerHTML += `
         <div class="card"><img src="${card.img}" alt="card${card.value}" /></div>
     `;
-            if (card.value === 1) {
-                dealerSum += 11;
-            } else {
-                dealerSum += card.value
-            }
+
+            dealerSum += (card.value === 1 && dealerSum + 11 <= 21) ? 11 : card.value;
             dealerCardCount++;
         }
         dealer_sum_cards.textContent = dealerSum;
-    }, 500)
-    // Player has Blackjack (21 with 2 cards)
+
+         // Player has Blackjack (21 with 2 cards)
     if (playerSum === 21 && playerCardCount === 2) {
         setTimeout(() => {
             successMessage("🎉 Blackjack! You win! 🏆");
@@ -511,6 +509,7 @@ const stand = () => {
             errorMessage("❌ Dealer wins with a higher hand. 😔");
         }, 2000);
     }
+    }, 500)
 
 }
 
